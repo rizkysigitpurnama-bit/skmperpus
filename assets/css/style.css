@@ -1,0 +1,263 @@
+:root { 
+    --biru: #003d7a; 
+    --langit: #007bff; 
+    --hijau: #28a745; 
+    --abu: #f8f9fa; 
+    --text: #333; 
+}
+
+body { 
+    font-family: 'Segoe UI', sans-serif; 
+    background: linear-gradient(160deg, #eaf1fc 0%, #cbdcf7 60%, #bcd3f2 100%); 
+    margin: 0; 
+    min-height: 100vh; 
+    padding: 20px; 
+    display: flex; 
+    justify-content: center; 
+    color: var(--text); 
+}
+
+.container { 
+    background: white; 
+    width: 95%; 
+    max-width: 1400px; 
+    border-radius: 15px; 
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15); 
+    overflow: hidden; 
+    position: relative; 
+}
+
+/* HEADER - DINAS ARPUS */
+.header { 
+    background: linear-gradient(135deg, var(--biru), var(--langit)); 
+    padding: 20px 40px; 
+    display: flex; 
+    align-items: center; 
+    color: white; 
+    gap: 20px; 
+}
+.header img { width: 50px; height: auto; }
+.header .title-area { display: flex; flex-direction: column; }
+.header h1 { margin: 0; font-size: 32px; line-height: 1; text-transform: uppercase; }
+.header h2 { margin: 5px 0 0 0; font-size: 16px; font-weight: 300; }
+
+.step { display: none; padding: 50px; }
+.active { display: block; animation: fadeIn 0.4s ease; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* HERO BANNER */
+.hero-banner {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    min-height: 440px;
+    display: flex;
+    align-items: center;
+}
+.hero-card { max-width: 600px; margin: 40px 55px; color: #fff; z-index: 2; }
+.hero-badge {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid rgba(255,255,255,0.65);
+    margin-bottom: 22px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+.hero-badge img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-title { font-size: 40px; font-weight: 800; color: #fff; margin: 0 0 14px; line-height: 1.15; }
+.hero-desc { font-size: 17px; color: rgba(255,255,255,0.9); margin-bottom: 32px; line-height: 1.6; }
+.hero-banner .btn { background: #fff; color: var(--biru); }
+.hero-banner .btn:hover { background: #eaf2ff; }
+.hero-banner .btn-back { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.5); }
+.hero-banner .btn-back:hover { background: rgba(255,255,255,0.28); }
+
+/* FORM BIODATA */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 50px; max-width: 1100px; margin: 0 auto; }
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--biru);
+    font-size: 13.5px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+input[type="text"], input[type="tel"], select {
+    width: 100%;
+    padding: 13px 16px;
+    border: 1.5px solid #dde3ec;
+    border-radius: 10px;
+    font-size: 15px;
+    box-sizing: border-box;
+    background: #fbfcfe;
+    color: var(--text);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+input[type="text"]:focus, input[type="tel"]:focus, select:focus {
+    outline: none;
+    border-color: var(--langit);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(0,123,255,0.12);
+}
+select {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'><path d='M1 1l6 6 6-6' stroke='%23003d7a' stroke-width='2' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 42px;
+    cursor: pointer;
+    appearance: none;
+}
+
+/* PILIHAN UMUR PILLS */
+.umur-pilihan { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 2px; }
+.umur-pilihan label {
+    font-weight: 500;
+    color: var(--text);
+    padding: 10px 18px;
+    border: 1.5px solid #dde3ec;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 14px;
+    background: #fbfcfe;
+    transition: 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.umur-pilihan input[type="radio"] {
+    accent-color: var(--biru);
+    width: 15px;
+    height: 15px;
+    margin: 0;
+}
+.umur-pilihan label:has(input:checked) {
+    border-color: var(--biru);
+    background: #eaf2ff;
+    color: var(--biru);
+    font-weight: 700;
+}
+.umur-pilihan label:hover { border-color: var(--langit); }
+
+/* PROGRESS INDIKATOR */
+.q-progress-wrap { max-width: 500px; margin: 20px auto 40px; text-align: center; }
+.q-progress-track { width: 100%; height: 8px; background: var(--abu); border-radius: 999px; overflow: hidden; }
+.q-progress-bar { height: 100%; width: 11%; background: linear-gradient(90deg, var(--langit), var(--biru)); border-radius: 999px; transition: width 0.35s ease; }
+.q-progress-label { margin-top: 10px; font-size: 13px; font-weight: 600; color: var(--biru); letter-spacing: 0.3px; }
+
+/* KUESIONER */
+.q-box { display: none; text-align: center; max-width: 850px; margin: 0 auto; }
+.q-box.q-active { display: block; }
+.emoji-grid { display: flex; justify-content: space-around; gap: 20px; margin: 40px 0; }
+.emoji-item { flex: 1; padding: 25px; border: 2px solid #eee; border-radius: 20px; cursor: pointer; transition: 0.3s; background: #fff; }
+.emoji-item span { font-size: 50px; display: block; }
+.emoji-item.selected { border-color: var(--hijau); background: #f0fff4; transform: scale(1.05); }
+
+/* TOMBOL */
+.btn-group { display: flex; justify-content: center; gap: 15px; margin-top: 40px; }
+.btn { background: var(--langit); color: white; border: none; padding: 18px 45px; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 16px; transition: 0.2s; }
+.btn:hover { background: var(--biru); transform: translateY(-2px); }
+.btn-back { background: #e2e8f0; color: #4a5568; }
+
+.extra-logos { margin-top: 40px; display: flex; gap: 40px; align-items: center; }
+.extra-logos img { height: 55px; background: #fff; padding: 6px 10px; border-radius: 8px; }
+
+/* REKAP & SWIPER CONTAINER */
+#section-laporan { padding: 40px 0; }
+.swiper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 60px 50px 60px !important;
+}
+.swiper-slide {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+}
+.skm-card-new {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 25px 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid #f0f0f0;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    will-change: transform, box-shadow;
+}
+.skm-card-new:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+.btn-pdf-lihat {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--langit);
+    font-weight: bold;
+    border: 1.5px solid var(--langit);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    margin-top: 15px;
+    transition: 0.3s ease;
+}
+.btn-pdf-lihat:hover {
+    background: var(--langit);
+    color: white;
+}
+
+/* PANAH & PAGINATION SWIPER */
+.swiper-button-next, .swiper-button-prev {
+    width: 45px !important;
+    height: 45px !important;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    color: var(--biru) !important;
+}
+.swiper-button-next:after, .swiper-button-prev:after {
+    font-size: 16px !important;
+    font-weight: bold;
+}
+.swiper-button-prev { left: 10px !important; }
+.swiper-button-next { right: 10px !important; }
+.swiper-pagination-bullet-active {
+    background: #007bff !important;
+    width: 25px !important;
+    border-radius: 5px !important;
+}
+
+/* REKAP KARTU & OVERLAY */
+.card-indeks { background: var(--hijau); color: white; padding: 30px; border-radius: 20px; max-width: 400px; margin: 20px auto; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+.card-indeks div { font-size: 55px; font-weight: 800; }
+.modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; justify-content: center; align-items: center; }
+.modal-content { background: white; padding: 40px; border-radius: 15px; text-align: center; max-width: 450px; width: 90%; }
+.success-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 2000; flex-direction: column; justify-content: center; align-items: center; }
+.checkmark-circle { width: 120px; height: 120px; border-radius: 50%; background: var(--hijau); display: flex; justify-content: center; align-items: center; margin-bottom: 20px; }
+.checkmark-icon { color: white; font-size: 70px; font-weight: bold; }
+
+/* MEDIA QUERIES (RESPONSIVE) */
+@media (max-width: 768px) {
+    #section-laporan { display: none !important; }
+    .header { flex-direction: column; text-align: center; padding: 16px; }
+    .header img { width: 42px; margin-bottom: 5px; }
+    .header h1 { font-size: 20px; }
+    .header h2 { font-size: 13px; }
+    .step { padding: 20px; }
+    .hero-banner { min-height: 360px; border-radius: 14px; }
+    .hero-card { margin: 26px 22px; max-width: 100%; }
+    .hero-title { font-size: 26px; }
+    .hero-desc { font-size: 14.5px; }
+    .btn-group { flex-direction: column; gap: 12px; }
+    .btn { width: 100%; padding: 14px; font-size: 15px; }
+    .form-grid { grid-template-columns: 1fr; gap: 15px; }
+    .emoji-grid { flex-wrap: wrap; gap: 15px; }
+    .emoji-item { flex: 0 0 48%; padding: 18px; }
+    .emoji-item span { font-size: 36px; }
+    .extra-logos { justify-content: center; flex-wrap: wrap; gap: 20px; }
+    .extra-logos img { height: 60px; }
+}
+@media (min-width: 769px) {
+    #section-laporan { display: block; }
+}
