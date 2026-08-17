@@ -99,21 +99,24 @@ class Dashboard extends Admin_Controller {
             $unsurData[] = round((float) ($unsurRaw["a$i"] ?? 0), 2);
         }
 
+        $totalRespondenAsli = $this->db->count_all('responden');
+
         // Parsing semua data ke View Admin
         $data = [
-            'notif'          => $notif,
-            'dataResponden'  => $this->Admin_model->data_responden($filter),
-            'tahunList'      => $this->Admin_model->daftar_tahun(),
-            'ikmKeseluruhan' => $this->Admin_model->ikm_keseluruhan(),
-            'grafikTahun'    => $grafikTahun,
-            'grafikSkor'     => $grafikSkor,
-            'unsurData'      => $unsurData,
-            'cari'           => $cari,
-            'tahunPil'       => $tahunPil,
-            'halaman'        => $halaman,
-            'totalHalaman'   => $totalHalaman,
-            'totalFilter'    => $totalFilter,
-            'list_laporan'   => $this->Admin_model->ambil_semua_laporan(), // Menampilkan list laporan di sisi kanan panel admin
+            'notif'              => $notif,
+            'dataResponden'      => $this->Admin_model->data_responden($filter),
+            'tahunList'          => $this->Admin_model->daftar_tahun(),
+            'ikmKeseluruhan'     => $this->Admin_model->ikm_keseluruhan(),
+            'grafikTahun'        => $grafikTahun,
+            'grafikSkor'         => $grafikSkor,
+            'unsurData'          => $unsurData,
+            'cari'               => $cari,
+            'tahunPil'           => $tahunPil,
+            'halaman'            => $halaman,
+            'totalHalaman'       => $totalHalaman,
+            'totalFilter'        => $totalFilter,
+            'totalRespondenAsli' => $totalRespondenAsli, // <-- PERBAIKAN: Dikirim ke view!
+            'list_laporan'       => $this->Admin_model->ambil_semua_laporan(),
         ];
 
         $this->load->view('admin/dashboard', $data);
